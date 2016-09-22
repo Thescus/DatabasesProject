@@ -10,51 +10,41 @@ Name: <input type="text" name="name"><br>
 Rekt:
 	<input type="radio" name="rekt" value="yes">Yes
 	<input type="radio" name="rekt" value="no">No
-<input type="submit">
+	<br>
+<input type="submit" value ="Continue">
 </form>
 <br>
 
 <?php
-//declare and set variables
-$howjew = 1;
-$kyle = "jew";
-$numbersBro = array(69, 420, 5, 1000);
+$bHasCookies;
 
-//create constant
-define("RACE", "white person");
-
-//make a function
-function addJew($nJew)
+if(!isset($_COOKIE["Username"]))
 {
-	//change variable by variable name
-	$GLOBALS['howjew'] += $nJew;
+	echo "Username not set!";
+	$GLOBALS['bHasCookies']=false;
 }
-
-//say something
-echo "Kyle is a " . $kyle . "<br><br>";
-
-//use constant
-echo "Kyle is a " . RACE . "<br><br>";
-
-//for looping
-for ($x = 1; $x <= 10; $x++)
+else
 {
-	//using print works the same as echo
-	print "Kyle is a $kyle x" . $howjew . "<br>";
-	addJew(1);
+	echo "Username is " . $_COOKIE["Username"];
+	$GLOBALS['bHasCookies']=true;
 }
-print "<br>";
-
-//foreach to print out an array
-foreach ($numbersBro as $value)
-{
-	echo "$value <br>";
-}
-print "<br>";
-
-//dump the contents of a variable or array
-var_dump($numbersBro);
 ?>
+
+<form action="SomePage.php" method="post">
+
+<?php if($GLOBALS['bHasCookies']==true): ?>
+	<form action="SomePage.php" method="clearcookies">
+		<input type="submit" value="Clear Cookies">
+	</form>
+	
+	<?php
+	if($_SERVER['REQUEST_METHOD']=='POST')
+	{
+		setcookie("Username", "", time() - 3600);
+		setcookie("RektStatus", "", time() - 3600);
+	}
+	?>
+<?php endif; ?>
 
 </body>
 </html> 
