@@ -1,50 +1,36 @@
+<?php
+include("loginserver.php");
+?>
+
 <!DOCTYPE html>
 <html>
+
 <body>
 
-<h1>Kyle is a Jew</h1>
-<h2>Testificate</h2>
+<h1>Jim's Trees</h1>
 
-<form action="AnotherPage.php" method ="post">
-Name: <input type="text" name="name"><br>
-Rekt:
-	<input type="radio" name="rekt" value="yes">Yes
-	<input type="radio" name="rekt" value="no">No
-	<br>
-<input type="submit" value ="Continue">
+<h2>Log In</h2>
+<!-- Display an error upon incorrect information input -->
+<span><?php echo $loginError; ?></span>
+
+<form action="" method="post">
+Username <br><input type="text" name="username"><br>
+Password <br><input type="text" name="password"><br>
+<input type="submit" value="Log In" name="btnLogIn">
 </form>
 <br>
 
-<?php
-$bHasCookies;
+<h2>Create Account</h2>
+<!-- Display an error upon incorrect information input -->
+<span><?php echo $createAccountError; ?></span>
 
-if(!isset($_COOKIE["Username"]))
-{
-	echo "Username not set!";
-	$GLOBALS['bHasCookies']=false;
-}
-else
-{
-	echo "Username is " . $_COOKIE["Username"];
-	$GLOBALS['bHasCookies']=true;
-}
-?>
-
-<form action="SomePage.php" method="post">
-
-<?php if($GLOBALS['bHasCookies']==true): ?>
-	<form action="SomePage.php" method="clearcookies">
-		<input type="submit" value="Clear Cookies">
-	</form>
-	
-	<?php
-	if($_SERVER['REQUEST_METHOD']=='POST')
-	{
-		setcookie("Username", "", time() - 3600);
-		setcookie("RektStatus", "", time() - 3600);
-	}
-	?>
-<?php endif; ?>
+<form action="" method="post">
+Username <br><input type="text" name="username"><br>
+Password <br><input type="text" name="password"><br>
+Repeat Password <br><input type="text" name="repeatpassword"><br>
+<input type="submit" value="Create Account" name="btnCreateAccount">
+</form>
+<br>
 
 </body>
 </html> 
