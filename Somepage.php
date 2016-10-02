@@ -4,7 +4,6 @@ include("loginserver.php");
 
 <!DOCTYPE html>
 <html>
-
 <body>
 
 <h1>Jim's Trees</h1>

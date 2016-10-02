@@ -1,3 +1,7 @@
+<?php
+include("loginserver.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,15 +25,21 @@ input[type=text]
 {
 	width:200px
 }
+
+.boxtop
+{
+	
+}
 .modal
 {
 	position: fixed;
+	overflow: auto;
 	font-family: Arial, Helvetica, sans-serif;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(0,0,0,0.8);
+	background: rgba(0,0,0,0.4);
 	z-index: 99999;
 	opacity:0;
 	-webkit-transition: opacity 400ms ease-in;
@@ -42,64 +52,142 @@ input[type=text]
 	opacity: 1;
 	pointer-events: auto;
 }
-
 .modal > div
 {
 	width: 800px;
-	height: 500px;
+	height: 400px;
 	position: relative;
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
-	border-radius: 10px;
-	background: #fff;
-	background: -moz-linear-gradient(#fff, #999);
-	background: -webkit-linear-gradient(#fff, #999);
-	background: -o-linear-gradient(#fff, #999);
+	border: 3px solid #ccc;
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	background: #FFFFFF;
+	-moz-box-shadow: 3px 3px 5px #000;
+	-webkit-box-shadow: 3px 3px 5px #000;
+	box-shadow: 3px 3px 5px #000;
 }
 .close
 {
-	background: #606061;
+	background: #ccc;
 	color: #FFFFFF;
-	line-height: 25px;
+	font-size: 25px;
+	line-height: 50px;
 	position: absolute;
-	right: -12px;
+	right: 0px;
+	top: 0px;
 	text-align: center;
-	top: -10px;
-	width: 24px;
+	width: 50px;
 	text-decoration: none;
 	font-weight: bold;
-	-webkit-border-radius: 12px;
-	-moz-border-radius: 12px;
-	border-radius: 12px;
-	-moz-box-shadow: 1px 1px 3px #000;
-	-webkit-box-shadow: 1px 1px 3px #000;
-	box-shadow: 1px 1px 3px #000;
+	border-bottom-left-radius: 25px;
 }
 .close:hover
 {
-	background: #00d9ff;
+	background: #BDBDBD;
+}
+.linebreak
+{
+	width: 75%;
+	border-radius: 25px;
+	border: 3px solid #ccc;
+	padding-right: 25px;
+	padding-left: 25px;
+	background-color: #ccc;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.uUsername
+{
+	float:left;
+	width: 35%;
+	height: 30px;
+	font-size: 115%;
+	border-radius: 10px;
+	padding-left: 5px;
+}
+.uPassword
+{
+	float: left;
+	width: 35%;
+	height: 30px;
+	font-size: 115%;
+	border-radius: 10px;
+	padding-left: 5px;
+	margin-left: 85px;
+}
+.uLogInButton
+{
+	background: #E0E0E0;
+	clear: both;
+	width: 20%;
+	height: 30px;
+	font-size: 100%;
+	border-radius: 10px;
+}
+.uLogInButton:hover
+{
+	background: #BDBDBD;
+}
+.nUsername
+{
+	float: left;
+	width: 35%;
+	height: 30px;
+	font-size: 115%;
+	border-radius: 10px;
+	padding-left: 5px;
+}
+.nPassword
+{
+	float: left;
+	width: 35%;
+	height: 30px;
+	font-size: 115%;
+	border-radius: 10px;
+	padding-left: 5px;
+	margin-left: 85px;
 }
 
 </style>
+
 </head>
-
 <body>
+
 <div class="box">
-<h1 align="center">Jim's Trees</h1>
-
-<a href="#openModal">Log In</a>
-
-<div id="openModal" class ="modal">
-	<div>
-		<a href="#close" title="Close" class="close">x</a>
-		<h2>Modal Box</h2>
-		<p>line1</p>
-		<p>line2</p>
+			<p><?php echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA; ?></p>
+			<p><?php echo $createAccountError; ?></p>
+	<div class="boxtop">
+		<h1 align="center">Jim's Trees</h1>
+		<a href="#openModal" style="float:right;">Log In</a>
+	</div>	
+	<div id="openModal" class ="modal">
+		<div>
+			<a href="#close" title="Close" class="close">x</a>
+			<p style="font-size: 20px;">Returning Users</p>
+			<form action="" method="post">
+				<input type="text" placeholder="Username" name="username" class="uUsername">
+				<input type="text" placeholder="Password" name="password" class="uPassword"><br><br><br>
+				<input type="submit" value="Log In" name="btnLogIn" class="uLogInButton">
+				<p><?php echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA; ?></p>
+			</form>
+			<p><?php echo $createAccountError; ?></p>
+			<div class="linebreak"></div>
+			<p style="font-size: 20px; margin-top: 50px;">New Users</p>
+			<form action="" method="post">
+				<input type="text" placeholder="NewUsername" name="username" class="nUsername">
+				<input type="text" placeholder="NewPassword" name="password" class="nPassword">
+				<input type="text" placeholder="RepeatPassword" name="repeatpassword" class="nPassword"><br><br><br>
+				<input type="submit" value="Create Account" name="btnCreateAccount" class="uLogInButton">
+			<p><?php echo $createAccountError; ?></p>
+			</form>
+			<p><?php echo $createAccountError; ?></p>
+		</div>
 	</div>
 </div>
 
-<form action="" method="post" style="text-align:right;">
-<input type="text" placeholder="Sample Text" name="testbox"><br><br>
-</form>
 </body>
 </html>

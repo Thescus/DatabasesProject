@@ -21,6 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['btnLogIn']))
 	{
 		$username = $_POST['username'];
 		$password = $_POST['password'];
+		$password = md5($password);
 		
 		//connect to and select database
 		$con = mysqli_connect("localhost", "root", "");
@@ -65,11 +66,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['btnCreateAccount']))
 	{
 		$createAccountError = "Passwords do not match";
 	}
+	//if username contains invalid characters
+	if(preg_match("^[0-9A-Za-z_]+$", username) == 0)
+	{
+		$createAccountError = "Username contains invalid characters";
+	}
 	//all good
 	else
 	{
 		$username = $_POST['username'];
 		$password = $_POST['password'];
+		$password = md5($password);
 		
 		//connect to and select database
 		$con = mysqli_connect("localhost", "root", "");
